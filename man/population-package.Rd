@@ -11,13 +11,15 @@ Population models
 A package to run population simulations using an Individual-Based Model compiled in C. The population model is a discrete, age-structured model and follows the formalizing of a post-breeding Leslie matrix model.
 \cr \cr
 Version 0.1 proposes functions to run and plot population projections and includes demographic and environmental stochasticities. There is also the option to parallelize simulations (except on Windows).
+\cr \cr
+Version 0.2 fixes a bug that generated wrong results at very large population sizes.
 }
 \details{
 \tabular{ll}{
 Package: \tab population\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2015-12-23\cr
+Version: \tab 0.2\cr
+Date: \tab 2018-02-05\cr
 License: \tab GPL-3\cr
 }
 }

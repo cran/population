@@ -34,7 +34,7 @@ double *R_litter_size_md;
 double *R_litter_size_sd;
 
 struct statistics {
-	unsigned short ***runs;
+	double ***runs;
 };
 
 struct statistics *stats;
@@ -58,7 +58,6 @@ struct t_population {
 	double *initial_number_indiv;
 	double *survival;
 	double *litter_size;
-	double sex_ratio;
 };
 
 void set_constant_parameters(t_population *pop);

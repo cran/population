@@ -36,14 +36,14 @@
 
 void mc_allocate_statistics(struct statistics *stats) {
 
-	stats->runs = malloc(R_number_mc_runs * sizeof(unsigned short **));
+	stats->runs = malloc(R_number_mc_runs * sizeof(double **));
 
 	for (long i = 0; i < R_number_mc_runs; i++) {
-		stats->runs[i] = malloc((R_number_of_years+1) * sizeof(unsigned short *));
+		stats->runs[i] = malloc((R_number_of_years+1) * sizeof(double *));
 		for (long j = 0; j <= R_number_of_years; j++) {
-			stats->runs[i][j] = malloc(R_number_classes * sizeof(unsigned short));
+			stats->runs[i][j] = malloc(R_number_classes * sizeof(double));
 			for (long k = 0; k < R_number_classes; k++) {
-					stats->runs[i][j][k] = 0.0;
+					stats->runs[i][j][k] = 0;
 			}
 		}
 	}
@@ -78,9 +78,7 @@ void monte_carlo(struct statistics *stats) {
 
 	long steps = R_number_mc_runs/50;
 
-	if (steps > 0) {
-		if (R_mc_seed == 1) Rprintf("\n|");
-	}
+    Rprintf("\n|");
 
 	for (long i = 0; i < R_number_mc_runs; i++) {
 
@@ -105,7 +103,7 @@ void monte_carlo(struct statistics *stats) {
 
 		if (steps > 0) {
 			if (i % steps == 0) {
-				if (R_mc_seed == 1) Rprintf("*");
+                    Rprintf("*");
 			}
 		}
 
@@ -115,7 +113,7 @@ void monte_carlo(struct statistics *stats) {
 	}
 
 	if (steps > 0) {
-		if (R_mc_seed == 1) Rprintf("|");
+            Rprintf("|");
 	}
 
 	PutRNGstate();

@@ -1,6 +1,6 @@
 exportPattern("^[[:alpha:]]+")
-useDynLib(population, C_montecarlo)
-
+# useDynLib(population, C_montecarlo)
+useDynLib(population, .registration = TRUE)
 import(
   parallel,
   abind

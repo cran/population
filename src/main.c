@@ -78,7 +78,7 @@ SEXP C_montecarlo (
 	for (long i = 0; i < R_number_mc_runs; i++) {
 		for (long j = 0; j < R_number_of_years; j++) {
 			for (long k = 0; k < R_number_classes; k++) {
-				REAL(R_runs)[ i * R_number_of_years * R_number_classes + j * R_number_classes + k] = stats->runs[i][j][k];
+				REAL(R_runs)[ i * R_number_of_years * R_number_classes + j * R_number_classes + k] = (double)stats->runs[i][j][k];
 			}
 		}
 	}

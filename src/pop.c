@@ -33,20 +33,17 @@
 #define FEMALE 0
 #define MALE 1
 
-void create_individual(t_population *pop, int the_sex, int the_age);
+void create_individual(t_population *pop, int the_age);
 void survival_of_individuals(t_population *pop);
 void remove_individuals(t_population *pop);
 void free_individual(t_individual *idv);
 void reproduction_of_individuals(t_population *pop);
-void transition_individuals(t_population *pop);
 
 /*******************************************************************************
  Assign population parameters
  *******************************************************************************/
 
 void set_constant_parameters(t_population *pop) {
-	
-	pop->sex_ratio = R_sex_ratio;
 	
 	pop->initial_number_indiv = malloc(R_number_classes * sizeof(double));
 	for (int i = 0; i < R_number_classes; i++) {
@@ -91,7 +88,7 @@ void set_mc_stochastic_parameters(t_population *pop) {
  Create individual in population
  *******************************************************************************/
 
-void create_individual(t_population *pop, int the_sex, int the_age) {
+void create_individual(t_population *pop, int the_age) {
 	
 	t_individual *new_idv = malloc(sizeof(t_individual));
 	
@@ -100,7 +97,6 @@ void create_individual(t_population *pop, int the_sex, int the_age) {
 	
 	new_idv->unique = pop->number_indiv_history;
 	new_idv->alive = 1;
-	new_idv->sex = the_sex;
 	new_idv->age = the_age;
 		
 	if (pop->number_indiv == 1) {
@@ -135,7 +131,7 @@ void create_population(t_population *pop) {
     
 	for (int k = 0; k < R_number_classes; k++) {
 		for (int i = 0; i < pop->initial_number_indiv[k]; i++) {
-			create_individual(pop, 0, k);
+			create_individual(pop, k);
 		}
 	}
     
@@ -228,7 +224,7 @@ void reproduction_of_individuals(t_population *pop) {
 			
 			for (int l = 0; l < f; l++) {
 				
-				create_individual(pop, 0, 0);
+				create_individual(pop, 0);
 				
 			}
 			
